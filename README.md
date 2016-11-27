@@ -31,7 +31,7 @@ best way to implement this is by simply executing it after the "webSession" even
 		steamMarket.sellItem({
 			appid: "730", 
 			contextid: "2",
-			assetid: "8224541178",
+			assetid: "",
 			price: price
 		},function(err,res) {
 
