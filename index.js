@@ -19,7 +19,7 @@ SteamMarket.prototype = new events.EventEmitter;
 SteamMarket.prototype.sellItem = function (item,callback){
 	var self = this;
 	var options = {
-		method:"POST",
+	method:"POST",
         url: 'https://steamcommunity.com/market/sellitem/',
         headers: {
         	"Accept": "*/*",
