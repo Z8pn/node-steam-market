@@ -2,22 +2,21 @@ var Request = require('request');
 
 var SteamMarket = function (options)
 {
-	this.jar = Request.jar();
+	this._jar = Request.jar();
 	this.sessionid = options.sessionid;
 
-	this._request = Request.defaults({ jar: this.jar });
+	this._request = Request.defaults({ jar: this._jar });
 	options.webCookie.forEach((function(name)
 	{
 		((function (cookie)
 		{
-			this.jar.setCookie(Request.cookie(cookie), 'https://steamcommunity.com');
+			this._jar.setCookie(Request.cookie(cookie), 'https://steamcommunity.com');
 		}).bind(this))(name);
 	}).bind(this));
 };
 SteamMarket.prototype = new events.EventEmitter;
 
 SteamMarket.prototype.sellItem = function (item,callback){
-	var self = this;
 	var options = {
 	method:"POST",
         url: 'https://steamcommunity.com/market/sellitem/',
@@ -41,12 +40,13 @@ SteamMarket.prototype.sellItem = function (item,callback){
 		};
 		this._request(options, function(error, response, body){
 			var body = JSON.parse(body);
-			console.log(body);
-			if (callback) {
-				if (body.success == true) {
-					callback(null,{assetid:item.assetid,price:item.price,status:"Waiting for confirmation"});
-				} else {
+			if (body) {
+				if (callback) {
+					if (body.success == true) {
+						callback(null,{assetid:item.assetid,price:item.price,status:"Waiting for confirmation"});
+					} else {
 						callback(body.message,null);
+					}
 				}
 			}
 
