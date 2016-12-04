@@ -1,0 +1,20 @@
+{
+  "name": "node-steam-market",
+  "version": "1.0.0",
+  "description": "basic sale functions for the steam market",
+  "main": "index.js",
+  "dependencies": {
+    "request": "^2.79.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Z8pn/node-steam-market.git"
+  },
+  "author": "Z8pn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Z8pn/node-steam-market/issues"
+  },
+  "homepage": "https://github.com/Z8pn/node-steam-market#readme"
+}
