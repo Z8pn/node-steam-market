@@ -14,7 +14,6 @@ var SteamMarket = function (options)
 		}).bind(this))(name);
 	}).bind(this));
 };
-SteamMarket.prototype = new events.EventEmitter;
 
 SteamMarket.prototype.sellItem = function (item,callback){
 	var options = {
